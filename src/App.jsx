@@ -1,5 +1,6 @@
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
       </nav>
 
       <main>
-        hello
+        <Home />
       </main>
 
       <footer>
