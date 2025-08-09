@@ -120,11 +120,11 @@ const Home = () => {
     const loadData = async () => {
       const data = await fetchApi();
       if (!data) return; // Optional
-      setAxiosData(data)
-    }
+      setAxiosData(data);
+    };
 
-    loadData()
-  }, [])
+    loadData();
+  }, []);
 
   return (
     <div>
@@ -163,6 +163,34 @@ const Home = () => {
 
       {/* Fetch */}
       <section>
+        <h1>Fetch Data</h1>
+
+        <ul className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
+          {fetchApi.map((data, index) => (
+            <li key={index}>
+              <img
+                src={data.image}
+                alt="Image"
+                className="rounded break-inside-avoid shadow"
+              />
+              <aside className="bg-blue-300 mb-4 p-2">
+                <h1>{data.name}</h1>
+                <p>{data.cateogry}</p>
+                <p>{data.size}</p>
+                <p>{data.color}</p>
+                <h2>${data.price}</h2>
+              </aside>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <hr />
+
+      {/* Fetch */}
+      <section>
+        <h1>Axios data</h1>
+
         <ul className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
           {axiosData.map((data, index) => (
             <li key={index}>
