@@ -166,7 +166,7 @@ const Home = () => {
         <h1>Fetch Data</h1>
 
         <ul className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
-          {fetchApi.map((data, index) => (
+          {fetchData.map((data, index) => (
             <li key={index}>
               <img
                 src={data.image}
