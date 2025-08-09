@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 
 const Home = () => {
@@ -92,6 +92,17 @@ const Home = () => {
     },
   ];
 
+  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    console.log("You trigger useEffect");
+  }, []);
+
+  useEffect(() => {
+    setMessage(`You have clicked ${count} times.`);
+  }, [count]);
+
   return (
     <div>
       {/* Banner */}
@@ -99,15 +110,26 @@ const Home = () => {
         <Banner />
       </section>
 
+      {/* Temporary section */}
+      <section>
+        <button
+          onClick={() => setCount(count + 1)}
+          className="px-2 py-1 bg-red-600 rounded"
+        >
+          Click me
+        </button>
+        <p>{message}</p>
+      </section>
+
       {/* Display */}
       <section>
-        <div className="columns-2 md:columns-3 lg:columns-5 gap-4 p-4">
+        <div className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
           {images.map((image, index) => (
             <div
               key={index}
-              className="bg-blue-300 mb-4 rounded shadow border-2 break-inside-avoid"
+              className="bg-blue-300 mb-4 rounded shadow break-inside-avoid"
             >
-              <img src={image.image} alt={image.title} />
+              <img src={image.image} alt="Image" />
               <h1 className="p-2">{image.title}</h1>
             </div>
           ))}
