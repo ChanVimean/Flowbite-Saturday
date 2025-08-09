@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
+import fetchApi from "../utils/fetchApi";
 
 const Home = () => {
   const images = [
@@ -95,20 +96,35 @@ const Home = () => {
   const [count, setCount] = useState(0);
   const [message, setMessage] = useState("");
   const [fetchData, setFetchData] = useState([]);
+  const [axiosData, setAxiosData] = useState([]);
 
+  // Example without dependencies
   // useEffect(() => {
   //   console.log("You trigger useEffect");
   // }, []);
 
+  // Example with dependencies
   useEffect(() => {
     setMessage(`You have clicked ${count} times.`);
   }, [count]);
 
+  // fetch
   useEffect(() => {
     fetch("https://clothes-json.onrender.com/products")
       .then((res) => res.json())
       .then((json) => setFetchData(json));
   }, []);
+
+  // axios
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await fetchApi();
+      if (!data) return; // Optional
+      setAxiosData(data)
+    }
+
+    loadData()
+  }, [])
 
   return (
     <div>
@@ -148,7 +164,7 @@ const Home = () => {
       {/* Fetch */}
       <section>
         <ul className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
-          {fetchData.map((data, index) => (
+          {axiosData.map((data, index) => (
             <li key={index}>
               <img
                 src={data.image}
