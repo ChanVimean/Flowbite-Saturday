@@ -94,14 +94,21 @@ const Home = () => {
 
   const [count, setCount] = useState(0);
   const [message, setMessage] = useState("");
+  const [fetchData, setFetchData] = useState([]);
 
-  useEffect(() => {
-    console.log("You trigger useEffect");
-  }, []);
+  // useEffect(() => {
+  //   console.log("You trigger useEffect");
+  // }, []);
 
   useEffect(() => {
     setMessage(`You have clicked ${count} times.`);
   }, [count]);
+
+  useEffect(() => {
+    fetch("https://clothes-json.onrender.com/products")
+      .then((res) => res.json())
+      .then((json) => setFetchData(json));
+  }, []);
 
   return (
     <div>
@@ -134,6 +141,30 @@ const Home = () => {
             </div>
           ))}
         </div>
+      </section>
+
+      <hr />
+
+      {/* Fetch */}
+      <section>
+        <ul className="columns-2 md:columns-4 lg:columns-6 gap-4 p-4">
+          {fetchData.map((data, index) => (
+            <li key={index}>
+              <img
+                src={data.image}
+                alt="Image"
+                className="rounded break-inside-avoid shadow"
+              />
+              <aside className="bg-blue-300 mb-4 p-2">
+                <h1>{data.name}</h1>
+                <p>{data.cateogry}</p>
+                <p>{data.size}</p>
+                <p>{data.color}</p>
+                <h2>${data.price}</h2>
+              </aside>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
