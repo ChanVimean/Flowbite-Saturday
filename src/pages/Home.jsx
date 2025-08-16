@@ -130,7 +130,7 @@ const Home = () => {
     <div>
       {/* Banner */}
       <section>
-        <Banner />
+        <Banner title={"We are Cambodian"} />
       </section>
 
       {/* Temporary section */}
