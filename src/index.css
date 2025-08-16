@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+/* ? Light theme (default) */
+:root {
+  --bg-theme: #f6f6f6;
+  --text-theme: #2b2b2b;
+}
+
+/* ? Dark theme overrides */
+.dark-theme {
+  --bg-theme: #502f4c;
+  --text-theme: #fef9ff;
+}
+
+body {
+  background-color: var(--bg-theme);
+  color: var(--text-theme);
+}

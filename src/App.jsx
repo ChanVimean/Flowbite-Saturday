@@ -13,8 +13,8 @@ const App = () => {
 
       <main>
         {/* <Test /> */}
-        {/* <Home /> */}
-        <Test1 name={"James"} />
+        <Home />
+        {/* <Test1 name={"James"} /> */}
       </main>
 
       <footer>
