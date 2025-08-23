@@ -2,6 +2,7 @@ import { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 import { IoMdMoon } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { theme, toggleTheme } = useContext(ProductContext);
@@ -24,10 +25,9 @@ const NavBar = () => {
         </a>
 
         <ul className="flex space-x-8">
-          <li>Home</li>
-          <li>About</li>
-          <li>News</li>
-          <li>Contact</li>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/ict">Ict</Link>
           <li>
             <button onClick={toggleTheme}>
               {theme === "light" ? <IoMdMoon /> : <IoSunnyOutline />}
