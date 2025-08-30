@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
+import Home from "./pages/Home"
 import About from "./pages/About";
 import Ict from "./pages/Ict";
 
 const App = () => {
   return (
-    <div>
+    <>
       <nav>
         <NavBar />
       </nav>
@@ -23,7 +23,7 @@ const App = () => {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 };
 

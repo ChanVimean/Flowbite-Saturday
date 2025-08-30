@@ -5,4 +5,5 @@ const fetchApi = async () => {
   return res.data;
 };
 
+
 export default fetchApi;
